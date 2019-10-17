@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="format-detection" content="telephone=no">
+    <meta name="msapplication-tap-highlight" content="no">
+    <meta name="viewport" content="initial-scale=1, width=device-width, viewport-fit=cover">
+    <link rel="stylesheet" type="text/css" href="css/index.css">
+    <title>Hello World</title>
+</head>
+
+<body>
+    <div class="app">
+        <h1>Apache Cordova</h1>
+        <div id="deviceready" class="blink">
+            <p class="event listening">Connecting to Device</p>
+            <p class="event received">Device is Ready</p>
+            <button onclick="abrirTriagem()">Ir para triagem</button>
+        </div>
+    </div>
+    <script type=" text/javascript" src="cordova.js"></script>
+    <script type="text/javascript" src="js/index.js"></script>
+    <script type="text/javascript">
+        var conexao = 'Unknown connection'
+
+        function iniciar() {
+            checkConnection()
+            if (conexao != 'No network connection' && conexao != 'Unknown connection') {
+               if (navigator.notification) {
+                   navigator.notification.alert(
+                   'Conexão ' + conexao, // message
+                   alertDismissed, // callback
+                   'Conexão', // title
+                   'Ok');                  // buttonName
+               } else {
+                   alert("Conexão " + conexao)
+               }
+           }else{            
+               abrirTriagem()
+           }
+       }
+
+       function alertDismissed() {
+       }
+
+       function checkConnection() {
+        var networkState = navigator.connection.type;
+        var states = {};
+        states[Connection.UNKNOWN] = 'Unknown connection';
+        states[Connection.ETHERNET] = 'Ethernet connection';
+        states[Connection.WIFI] = 'WiFi connection';
+        states[Connection.CELL_2G] = 'Cell 2G connection';
+        states[Connection.CELL_3G] = 'Cell 3G connection';
+        states[Connection.CELL_4G] = 'Cell 4G connection';
+        states[Connection.CELL] = 'Cell generic connection';
+        states[Connection.NONE] = 'No network connection';
+        conexao = states[networkState];
+    }
+
+    function abrirTriagem() {
+        var sApp = startApp.set({
+            "application": "br.talent.triagem"
+        });
+
+        sApp.start(function () { /* success */
+        }, function (error) { /* fail */
+            alert(error);
+        });
+    }
+</script>
+</body>
+
+</html>
