@@ -1,6 +1,6 @@
 {
   "name": "helloworld",
-  "displayName": "HelloCordova",
+  "displayName": "AppTop",
   "version": "1.0.0",
   "description": "A sample Apache Cordova application that responds to the deviceready event.",
   "main": "index.js",
@@ -15,7 +15,12 @@
   "dependencies": {
     "com.lampa.startapp": "^6.1.6",
     "cordova-android": "^8.1.0",
+    "cordova-plugin-apkinstaller": "git+https://github.com/cigalecigales/cordova-plugin-apkInstaller.git",
+    "cordova-plugin-device": "^2.0.3",
     "cordova-plugin-dialogs": "^2.0.2",
+    "cordova-plugin-file": "^6.0.2",
+    "cordova-plugin-file-opener2": "^2.2.1",
+    "cordova-plugin-file-transfer": "^1.7.1",
     "cordova-plugin-network-information": "^2.0.2"
   },
   "cordova": {
@@ -23,7 +28,13 @@
       "com.lampa.startapp": {},
       "cordova-plugin-whitelist": {},
       "cordova-plugin-network-information": {},
-      "cordova-plugin-dialogs": {}
+      "cordova-plugin-dialogs": {},
+      "cordova-plugin-file-transfer": {},
+      "cordova-plugin-file-opener2": {
+        "ANDROID_SUPPORT_V4_VERSION": "27.+"
+      },
+      "cordova-plugin-device": {},
+      "cordova-plugin-apkInstaller": {}
     },
     "platforms": [
       "android"
